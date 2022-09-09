@@ -1,0 +1,204 @@
+    '========================================='
+    '========================================='
+    '       		REGLAGES VIDEO			  '
+    '========================================='
+    '========================================='
+    
+    ' 0=NTSC , 1=PAL
+    TvSet 0
+    
+    ' 320x224
+    VidMode Vid40Cell
+    
+    ' Couleur de fond
+    'BgColor 0,0
+    
+    ' Désactivation de l'affichage
+    Disable Screen
+    
+    '========================================='
+    '========================================='
+    '                 VARIABLES               '
+    '========================================='
+    '========================================='
+    
+    '-----------------------------------------'	
+    '                TILEMAPS                 '
+    '-----------------------------------------'
+    
+    Global tilemap_SCENE(40,28) As Integer
+    
+    '========================================='
+    '========================================='
+    ' 			 CHARGEMENT PALETTE 		  '
+    '========================================='
+    '========================================='
+    
+    Palettes pal_ECRAN_LANGUES,0,0,48
+    
+    '========================================='
+    '========================================='
+    ' 			CHARGEMENT DES TILES 		  '
+    '========================================='
+    '========================================='
+    
+    LoadTiles tiles_LANGUES_LAYER_B,609,256
+    LoadTiles tiles_LANGUES_LAYER_A,231,865
+    LoadTiles tiles_COURONNE,4,1096
+    LoadTiles tiles_DAGUE,24,1100
+    
+    '========================================='
+    '========================================='
+    '                 SPRITES                 '
+    '========================================='
+    '========================================='
+    
+    ' COURONNE '
+    Global spCouronne1 As Integer
+    spCouronne1=AddSprite(2,2)
+    PropSprite spCouronne1,1096,2
+    MoveSprite spCouronne1,184,168
+    
+    ' DAGUE '
+    Global spDague1 As Integer
+    spDague1=AddSprite(3,4)
+    PropSprite spDague1,1100,1
+    MoveSprite spDague1,309,181
+    
+    Global spDague2 As Integer
+    spDague2=AddSprite(3,4)
+    PropSprite spDague2,1112,1
+    MoveSprite spDague2,309,205
+    
+    '========================================='
+    '========================================='
+    '                 LAYER A                 '
+    '========================================='
+    '========================================='
+    
+    SetGfxPlane Scroll_A
+    
+    Reload tilemap_LANGUES_LAYER_A
+    
+    For y = 0 To 27
+    	For x = 0 To 39
+    		ReadInt numeroTile
+    		tilemap_SCENE(x,y) = numeroTile
+    	Next x
+    Next y
+    	
+    For y = 0 To 27
+    	For x = 0 To 39
+    		DrawTile tilemap_SCENE(x,y)+865+Palette(1),x,y
+    	Next x
+    Next y	
+    
+    '========================================='
+    '========================================='
+    '                 LAYER B                 '
+    '========================================='
+    '========================================='
+    
+    SetGfxPlane Scroll_B
+    
+    Reload tilemap_LANGUES_LAYER_B
+    
+    For y = 0 To 27
+    	For x = 0 To 39
+    		ReadInt numeroTile
+    		tilemap_SCENE(x,y) = numeroTile
+    	Next x
+    Next y
+    	
+    For y = 0 To 27
+    	For x = 0 To 39
+    		DrawTile tilemap_SCENE(x,y)+256+Palette(0),x,y
+    	Next x
+    Next y	
+    
+    Enable Screen
+    t=0
+    Versionlangue=1
+    D=0
+    G=0
+    do
+        j=joypad(0)
+        if j=0 then t++
+        if (J.4 [or] J.6 [or] J.5 [or] J.7) then F=1 else f=0
+        if j.2 then G=1:D=0
+        if J.3 then D=1:G=0
+        if t>3 then t=3
+        if t>2 then
+            'if (G or D) then gosub Gantsound:t=0
+            if f then t=0:exit do
+            if D then
+                MoveSprite spDague1,309,181
+                MoveSprite spDague2,309,205
+                Versionlangue=1
+                t=0
+            end if
+            if G then
+                MoveSprite spDague1,262,181+36
+                MoveSprite spDague2,262,205+36
+                Versionlangue=0
+                t=0
+            end if
+        end if
+        psgvol 1,0
+        Sleep 1,TVBLANK
+    loop
+    print "OK"
+    end
+    
+    '---------------------------------------------------------'
+    '---------------------------------------------------------'
+    '				      TILES & TILEMAPS 				      '
+    '---------------------------------------------------------'
+    '---------------------------------------------------------'
+    
+    ' TILES LAYER B '
+tiles_LANGUES_LAYER_B:
+    	DataFile GFX\tiles_LANGUES_LayerB.Bin,Bin
+    
+    ' TILEMAP LAYER B '
+tilemap_LANGUES_LAYER_B:
+    	DataFile GFX\tilemap_LANGUES_LayerB.Bin,Bin
+    
+    
+    ' TILES LAYER A '
+tiles_LANGUES_LAYER_A:
+    	DataFile GFX\tiles_LANGUES_LayerA.Bin,Bin 
+    
+    ' TILEMAP LAYER A '
+tilemap_LANGUES_LAYER_A:
+    	DataFile GFX\tilemap_LANGUES_LayerA.Bin,Bin
+    
+    '---------------------------------------------------------'
+    
+    ' TILES COURONNE '
+tiles_COURONNE:
+    	DataFile GFX\tiles_COURONNE.Bin,Bin
+    
+    '---------------------------------------------------------'
+    
+    ' TILES DAGUE '
+tiles_DAGUE:
+    	DataFile GFX\tiles_DAGUE.Bin,Bin
+    
+    '---------------------------------------------------------'
+    
+    '---------------------------------------------------------'
+    '					        PALETTE       		          '
+    '---------------------------------------------------------'
+    
+pal_ECRAN_LANGUES:
+    	DataInt	$0000,$0222,$0444,$0666,$0888,$0AAA,$0CCC,$0EEE ' LAYER B '
+    	DataInt	$0820,$0A40,$0C62,$0E84,$000C,$022E,$0EA6,$0006
+    
+    	DataInt	$0E0E,$0002,$0024,$0248,$0268,$048A,$06AC,$0026 ' LAYER A '
+    	DataInt	$08CE,$0246,$046A,$0468,$068A,$0466,$0244,$02AC
+    
+    	DataInt	$0E0E,$0688,$0466,$0244,$08AA,$0000,$0000,$0000 ' COURONNE '
+    	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    
+    

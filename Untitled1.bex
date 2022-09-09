@@ -1,0 +1,65 @@
+
+
+ 
+
+ 'Layer B = FR : 191 , ENG : 202
+ 'Layer A = 52 Tiles
+ versionlangue=0
+ if versionlangue=0 then AdrB = 191 else AdrB=202
+
+ palettes PaletteDefiA,2,0,16
+ palettes PaletteDefiENGB,1,0,16
+ if versionlangue=0 then loadtiles DefiFRTILE_B,AdrB,160 else loadtiles DefiENGTILE_B,AdrB,160
+ loadtiles DefiTILE_A,52,160+AdrB
+    
+    setgfxplane Scroll_B
+    if versionlangue=0 then Reload DefiFRMAP_B else  Reload DefiENGMAP_B         
+    For Y = 1 To 28                
+      For X = 1 To 40
+      ReadInt AuxInt
+      DrawTile 160+AuxInt+palette(1), X-1, Y-1
+      Next
+    Next
+    setgfxplane Scroll_A
+    Reload DefiMAP_A            
+    For Y = 1 To 28                
+      For X = 1 To 40
+      ReadInt AuxInt
+      DrawTile 160+AdrB+AuxInt+palette(2), X-1, Y-1
+      Next
+    Next
+
+
+ do
+ 
+ 
+    Sleep 1,TVBLANK
+ loop
+
+
+
+
+PaletteDefiENGB:
+ datafile GFX\palette_DEFIS_Ang_LayerB.bin,BIN
+PaletteDefiFRB:
+ datafile GFX\palette_DEFIS_Fr_LayerB.bin,BIN
+PaletteDefiA:
+ datafile GFX\palette_DEFIS_Fr_LayerA.bin,BIN
+
+DefiENGMAP_B:
+ datafile GFX\tilemap_DEFIS_Ang_LayerB.bin,BIN
+ 
+DefiENGTILE_B:
+ datafile GFX\tiles_DEFIS_Ang_LayerB.bin,BIN
+ 
+DefiFRMAP_B:
+ datafile GFX\tilemap_DEFIS_Fr_LayerB.bin,BIN
+ 
+DefiFRTILE_B:
+ datafile GFX\tiles_DEFIS_Fr_LayerB.bin,BIN
+ 
+DefiMAP_A:
+ datafile GFX\tilemap_DEFIS_Fr_LayerA.bin,BIN
+DefiTILE_A:
+ datafile GFX\tiles_DEFIS_Fr_LayerA.bin,BIN
+ 

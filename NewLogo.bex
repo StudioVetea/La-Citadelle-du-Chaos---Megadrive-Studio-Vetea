@@ -1,0 +1,238 @@
+    '========================================='
+    '========================================='
+    '       		REGLAGES VIDEO			  '
+    '========================================='
+    '========================================='
+    
+    ' 0=NTSC , 1=PAL
+     TvSet 0
+    
+    ' 320x224
+     VidMode Vid40Cell
+    
+    ' Couleur de fond
+     BgColor 0,0
+    'Option TextPriority,High
+    
+    '========================================='
+    '========================================='
+    '                 VARIABLES               '
+    '========================================='
+    '========================================='
+    
+    '-----------------------------------------'	
+    '                TILEMAPS                 '
+    '-----------------------------------------'
+    
+    'RAZ PLANE
+    setgfxplane SCROLL_B
+    cls
+    setgfxplane SCROLL_A
+    cls
+    
+     dim tilemap_SCENE(40,28) As Integer
+    
+    '========================================='
+    '========================================='
+    ' 			 CHARGEMENT PALETTE 		  '
+    '========================================='
+    '========================================='
+    
+     Palettes pal_BlackAll,0,0,64
+    
+    '========================================='
+    '========================================='
+    ' 			CHARGEMENT DES TILES 		  '
+    '========================================='
+    '========================================='
+    
+     LoadTiles TilesAStudio,56,256
+     loadtiles TilesBStudio,330,256+56
+
+    
+    
+    '========================================='
+    '========================================='
+    '                 SPRITES                 '
+    '========================================='
+    '========================================='
+    
+    disable screen
+    
+    '========================================='
+    '========================================='
+    '                 LAYER A                 '
+    '========================================='
+    '========================================='
+    
+    
+    SetGfxPlane Scroll_A
+    
+    Reload TilemapAStudio
+    
+    For y = 0 To 27
+    	For x = 0 To 39
+    		ReadInt numeroTile
+    		tilemap_SCENE(x,y) = numeroTile
+    	Next x
+    Next y
+    	
+    For y = 0 To 27
+    	For x = 0 To 39
+    		DrawTile tilemap_SCENE(x,y)+256+Palette(1),x,y
+    	Next x
+    Next y	
+    
+    '========================================='
+    '========================================='
+    '                 LAYER B                 '
+    '========================================='
+    '========================================='
+    
+    SetGfxPlane Scroll_B
+    
+    Reload TilemapBStudio
+    
+    For y = 0 To 27
+    	For x = 0 To 39
+    		ReadInt numeroTile
+    		tilemap_SCENE(x,y) = numeroTile
+    	Next x
+    Next y
+    	
+    For y = 0 To 27
+    	For x = 0 To 39
+    		DrawTile tilemap_SCENE(x,y)+256+56+Palette(0),x,y
+    	Next x
+    Next y	
+    
+    Enable Screen
+    
+    fadeinEx lblptr&(Pal_Studio),0,5,2
+
+ do
+
+    sleep 1,TVBlank
+ loop   
+     fadeoutEx lblptr&(Pal_Studio),0,5,2
+ end
+    
+
+   
+'Fade IN
+declare sub fadeinEx(palloc& as long, palline as integer, fadespeed as integer,NbPalette as integer)
+    Nb=NbPalette*15+4
+	for y=7 to 0 step -1
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	pal_edit_blue=paltemp>>8
+	pal_edit_red=paltemp and &hF
+	pal_edit_green=paltemp>>4-(pal_edit_blue<<4)
+	if pal_edit_blue >= (y+y) then
+		pal_edit_blue=pal_edit_blue-(y+y)
+	else
+		pal_edit_blue=0
+	endif
+	if pal_edit_green >= (y+y) then
+		pal_edit_green=pal_edit_green-(y+y)
+	else
+		pal_edit_green=0
+	endif
+	if pal_edit_red >= (y+y) then
+		pal_edit_red=pal_edit_red-(y+y)
+	else
+		pal_edit_red=0
+	endif
+	paltemp=pal_edit_red+(pal_edit_green<<4)+(pal_edit_blue<<8)
+	palette paltemp,palline,x
+	next x
+	sleep fadespeed
+	next y
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	Palette paltemp, palline, x
+	next
+end sub    
+    
+    
+declare sub fadeoutEx(palloc& as long, palline as integer, fadespeed as integer,NbPalette as integer)
+    Nb=15*NbPalette+4
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	Palette paltemp, palline, x
+	next
+
+	for y=0 to 7 step
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	pal_edit_blue=paltemp>>8
+	pal_edit_red=paltemp and &hF
+	pal_edit_green=paltemp>>4-(pal_edit_blue<<4)
+	if pal_edit_blue >= (y+y) then
+		pal_edit_blue=pal_edit_blue-(y+y)
+	else
+		pal_edit_blue=0
+	endif
+	if pal_edit_green >= (y+y) then
+		pal_edit_green=pal_edit_green-(y+y)
+	else
+		pal_edit_green=0
+	endif
+	if pal_edit_red >= (y+y) then
+		pal_edit_red=pal_edit_red-(y+y)
+	else
+		pal_edit_red=0
+	endif
+	paltemp=pal_edit_red+(pal_edit_green<<4)+(pal_edit_blue<<8)
+	palette paltemp,palline,x
+	next x
+	sleep fadespeed
+	next y
+end sub
+    
+    
+    
+      
+'---------------------------------------------------------'
+'---------------------------------------------------------'
+'				      TILES & TILEMAPS 				      '
+'---------------------------------------------------------'
+'---------------------------------------------------------'
+
+TilemapAStudio:
+    datafile GFX\tilemap_STUDIO_LayerA.bin,bin
+TilemapBStudio:
+    datafile GFX\tilemap_STUDIO_LayerB.bin,bin
+TilesAStudio:
+    datafile GFX\tiles_STUDIO_LayerA.bin,bin   
+TilesBStudio:
+    datafile GFX\tiles_STUDIO_LayerB.bin,bin
+
+    
+    
+    '---------------------------------------------------------'
+    
+    '---------------------------------------------------------'
+    '					        PALETTE       		          '
+    '---------------------------------------------------------'
+    
+   
+pal_Studio:
+	DATAINT	$0000,$0222,$0444,$0666,$0888,$0AAA,$0CCC,$0EEE ' LAYER B '
+	DATAINT	$0220,$0462,$0240,$02E2,$02C2,$02A2,$0282,$0000
+
+	DATAINT	$0E0E,$0EEE,$00EE,$00CE,$00AE,$008E,$006E,$004E ' LAYER A '
+	DATAINT	$002E,$0EC0,$0EA0,$0E80,$0E60,$0E40,$0E20,$0A20
+    
+pal_BlackAll:
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000

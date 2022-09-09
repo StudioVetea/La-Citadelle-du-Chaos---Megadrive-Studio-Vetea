@@ -1,0 +1,262 @@
+Samedi 23 Février 2019
+==============
+* Rippage des vignettes 25,40,52,90,118
+
+
+Lundi 23 Septembre 2019
+===============
+* Ajout de 4 nouvelles Polices.
+* Possibilité de choisir la Police dans le menu principal.
+
+
+Mardi 24 Septembre 2019
+===============
+* Ajout Paragraphe 11.
+* Ajout de l'écran démarrage "Studio Vetea".
+
+
+Mercredi 25 Septembre 2019
+=================
+* Amélioration de la gestion de l'inventaire/Objets de l'aventure.
+* Ajout Paragraphes 15,16,17
+* Résolution d'un bug de Gestion de la Chance en jeu.
+
+
+Jeudi 26 Septembre 2019
+===============
+* Ajout Paragraphse 19,26,27.
+
+
+Vendredi 27 Septembre 2019
+=================
+* Ajout Paragraphe 30,241,39,208.
+* Gestion des Events programmables en Combat.
+* Update du Module de Combat.
+
+
+Samedi 28 Septembre 2019
+=================
+* Ajout Paragraphe 42.
+* Gestion Objets/Module question.
+* Ajouts des fonctions ASM de Sons/Musiques.
+* Ajouts des Sons : Gants, Validation Gants.
+* Ajout d'une Musique Médiévale.
+* Ajout d'un bruit d'ambiance : Vent.
+
+
+Dimanche 29 Septembre 2019
+==================
+* Ajout Paragraphes 47,52,50,51,54,98,165,276,57,58,59,60,61
+* Ajout des Sons : Pages, Dés.
+* Modification Sons : Gants, Validation Gants.
+* Gestion du sac à dos.
+* Gestion des Sorts Passif : Endurance, Chance et Habileté.
+* Ajout de sons : Sorts magique, mort joueur
+
+
+
+Lundi 30 Septembre 2019
+===============
+* Ajout Paragraphes 62,64,3,65,66,67,68,70,71,72,73,74,77,82,85,87
+* Modification de L'outil LVH ( Ajout d'un Clear Texte. )
+* Ajout de sons : ouverture de porte.
+* Ajout scène 118.
+
+
+Jeudi 3 Octobre 2019
+=============
+* Ajout Paragraphes 88,89
+* Ajout de sons : Bruit douleur joueur.
+
+
+Mercredi 9 Octobre 2019
+===============
+* Ajout Paragraphe 90,91,92,93,97,101
+* Debuggage du Module Combat.
+* Intégration Cri Monstre.
+
+
+Jeudi 10 Octobre 2019
+==============
+* Debuggage Paragraphe 101
+* Ajout Paragraphe 105,102,103,104
+
+
+Vendredi 11 Octobre 2019
+=================
+* Refonte Icone Fuite du module combat.
+* Modification Module Combat.
+* Recadrage des Gantelets de sélection de Page.
+
+Samedi 12 Octobre 2019
+===============
+* Ajout Paragraphe 109
+* Rippage vignette 262
+* Surbrillance de l'affichage des Numéros de Page.
+* Association du bruit de douleur joueur dans scénario paragraphe.
+
+Dimanche 13 Octobre 2019
+================
+* Ajout Paragraphe 111,113,114,119,120,121,123,125
+* Ajout de sons : Boire breuvage.
+* Modification de l'affichage des Stats de la feuille de personnage.
+
+
+Lundi 14 Octobre 2019
+==============
+* Ajout Paragraphe 127,128,129,130,132,133
+
+
+Mardi 15 Octobre 2019
+==============
+* Ajout Paragraphe 134,135,136,138,139,140,141,142,143,144,146,147,148,150,151,152,153
+
+
+Mercredi 16 Octobre 2019
+================
+* Ajout Paragraphe 154,156,157,159,160,161,163,164,166,167,169
+* Rippage vignette 156,169
+
+
+Jeudi 17 Octobre 2019
+==============
+* Ajout Paragraphe 170
+
+Dimanche 20 Octobre 2019
+================
+* Ajout jeu Pique-Six et des informations en jeu.
+* Ajout Paragraphe 171,385,172,174,176,178,180,181,182,184
+* Refection Paragraphe 104.
+
+Lundi 21 Octobre 2019
+==============
+* Ajout Paragraphe 186,187,188,189,190
+
+Mardi 22 Octobre 2019
+==============
+* Ajout Paragraphe 191,193,194,196,199,200,203,204,205
+
+Mercredi 23 Octobre 2019
+================
+* Ajout Paragraphe 210,211,213,214,215,216,217 
+* Rippage vignette 210
+* Réfection Paragraphe 36.
+
+Jeudi 24 Octobre 2019
+==============
+* Ajout Paragraphe 219,220
+
+Vendredi 25 Octobre 2019
+=================
+* Ajout Paragraphe 224, 225,226,228,229
+
+Dimanche 27 Octobre 2019
+================
+* Ajout Paragraphe 231,232,233,234,235,236,238,239,240,242,244
+* Rippage vignette 234
+* Ajout des valeurs maxi des compétences dans la feuille de personnage.
+
+Dimanche 3 Novembre 2019
+=================
+* Rippage Vignette 245
+* Ajout Paragraphe 245,246,248,249,250,253,254
+
+Jeudi 7 Novembre 2019
+==============
+* Ajout Paragraphe 255,256,257,258,260
+* Rippage Vignette 257
+* Correction Paragraphe 34
+
+Lundi 11 Novembre 2019
+===============
+* Ajout Paragraphe 262,263,264,266,267,269,270,271,272,274
+* Rippage Vignette 269
+
+Dimanche 17 Novembre 2019
+==================
+* Ajout Paragraphe 275,399,277
+
+Dimanche 24 Novembre 2019
+==================
+* Ajout Paragraphe 278,282,283,284,285,287,289,290,291
+* Ajout jeu Roc-Bombe et des informations en jeu.
+* Rippage Vignette 281
+
+Lundi 25 Novembre 2019
+===============
+* Ajout Paragraphe 292,293,295,297,298,300,302
+* Rippage vignette 292
+* Refection Paragraphe 58.
+
+Mardi 26 Novembre 2019
+===============
+* Ajout Paragraphe 303,304,305,306,307,308,309,310,311
+* Ajout d'un paragraphe de Debug.
+* Rippage vignette 304
+
+Mercredi 27 Novembre 2019
+=================
+* Ajout Paragraphe 313,314,315,316,317,318,319,320,322
+* Rippage vignette 316
+* Refection Paragraphe 39
+
+Jeudi 28 Novembre 2019
+===============
+* Ajout Paragraphe 323,325,326,327,328,329
+* Rippage vignette 328
+
+Vendredi 29 Novembre 2019
+=================
+* Ajout Paragraphe 330,331,332,334,335,336,337,341,342,343,346,348,349,351,352
+* Rippage vignette 339,352
+
+Samedi 30 Novembre 2019
+================
+* Ajout Paragraphe 353,354,356,360,361,363,364
+
+Dimanche 1 Décembre 2019
+=================
+* Ajout Paragraphe 365
+* Ajout jeu Dague-Dingue.
+
+Lundi 2 Décembre 2019
+==============
+* Ajout Paragraphe 367,368,369,370,372,373,374
+* Rippage vignette 374
+
+Mardi 3 Décembre 2019
+==============
+* Ajout Paragraphe 375,376,377,381,382,384,386,387,388,389,390,391,392
+
+Mercredi 4 Décembre 2019
+================
+* Ajout Paragraphe 393,395,397,400
+* Refection Paragraphe 64,60,40
+* Ajout du Numéro de Paragraphe pour le Debug.
+* Texte Rapide sur ON par défaut.
+* Désormais on ne peut plus accéder à la feuille de personnage sur les illustrations en jeu.
+* Correction Paragraphe 100
+* Désormais, il sera possible de changer de Police en cours de jeu avec le Bouton C.
+
+Jeudi 5 Décembre 2019
+==============
+* Refection Paragraphe 205,248,54
+* Refection Paragraphe Mort en combat/Jeu.
+* Résolution d'un Bug en mode Combat Coop Paragraphe 205.
+* L'affichage des Gants de changement de Page ont été abaissé de 4 pixels.
+
+Dimanche 8 Décembre 2019
+=================
+* Refection Paragraphe 378 et des guillemets de scénario.
+
+Lundi 9 Décembre 2019
+==============
+* Réfection Paragraphe 394,179
+* Correction de quelques fautes d'orthographe.
+
+Vendredi 13 Décembre 2019
+=================
+* Réfection Paragraphe 126,245,82,87,254,201,22
+* Correction de quelques fautes d'orthographe.
+* Correction sélection des sorts.
+* Affichage du paragraphe précédent ( Debug )

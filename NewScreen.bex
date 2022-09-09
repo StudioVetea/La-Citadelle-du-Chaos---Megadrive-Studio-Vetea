@@ -1,0 +1,597 @@
+    '========================================='
+    '========================================='
+    '       		REGLAGES VIDEO			  '
+    '========================================='
+    '========================================='
+    
+    ' 0=NTSC , 1=PAL
+     TvSet 0
+    
+    ' 320x224
+     VidMode Vid40Cell
+    
+    ' Couleur de fond
+     BgColor 0,0
+    'Option TextPriority,High
+    
+    '========================================='
+    '========================================='
+    '                 VARIABLES               '
+    '========================================='
+    '========================================='
+    
+    '-----------------------------------------'	
+    '                TILEMAPS                 '
+    '-----------------------------------------'
+    
+    'RAZ PLANE
+    setgfxplane SCROLL_B
+    cls
+    setgfxplane SCROLL_A
+    cls
+    
+     dim tilemap_SCENE(40,28) As Integer
+    
+    '========================================='
+    '========================================='
+    ' 			 CHARGEMENT PALETTE 		  '
+    '========================================='
+    '========================================='
+    
+     Palettes pal_BlackAll,0,0,64
+    
+    '========================================='
+    '========================================='
+    ' 			CHARGEMENT DES TILES 		  '
+    '========================================='
+    '========================================='
+    
+     LoadTiles tiles_STEVE_JACKSON_FR,31,256
+     LoadTiles tiles_TITRE_FR,95,287
+     LoadTiles tiles_ECRAN_TITRE_LAYER_A,403,382
+     LoadTiles tiles_ECRAN_TITRE_LAYER_B,161,785
+     LoadTiles tiles_BOUCLIER1,16,946
+     LoadTiles tiles_BOUCLIER2,6,962
+     LoadTiles tiles_CHEVALIER,96,968
+    
+    
+    '========================================='
+    '========================================='
+    '                 SPRITES                 '
+    '========================================='
+    '========================================='
+    
+    disable screen
+    VersionLangue=0
+    Option TextPriority,low
+    
+    if VersionLangue=0 then
+        LoadTiles tiles_STEVE_JACKSON_FR,31,256
+        LoadTiles tiles_TITRE_FR,95,287
+        LoadTiles tiles_ECRAN_TITRE_LAYER_A,403,382
+        LoadTiles tiles_ECRAN_TITRE_LAYER_B,161,785
+        LoadTiles tiles_BOUCLIER1,16,946
+        LoadTiles tiles_BOUCLIER2,6,962
+        LoadTiles tiles_CHEVALIER,96,968
+        AdrFR1=382
+        AdrFR2=785
+        ' STEVE JACKSON '
+        'dim spJackson1 As Integer
+        spJackson1=AddSprite(2,4)
+        PropSprite spJackson1,256,3
+        MoveSprite spJackson1,244,147
+        
+        'dim spJackson2 As Integer
+        spJackson2=AddSprite(2,4)
+        PropSprite spJackson2,264,3
+        MoveSprite spJackson2,276,147
+        
+        'dim spJackson3 As Integer
+        spJackson3=AddSprite(2,4)
+        PropSprite spJackson3,272,3
+        MoveSprite spJackson3,308,147
+        
+        'dim spJackson4 As Integer
+        spJackson4=AddSprite(2,2)
+        PropSprite spJackson4,280,3
+        MoveSprite spJackson4,340,147
+        
+        'dim spJackson5 As Integer
+        spJackson5=AddSprite(1,1)
+        PropSprite spJackson5,284,3
+        MoveSprite spJackson5,284,163
+        
+        
+        ' LA CITADELLE DU CHAOS '
+        'dim spTitre1 As Integer
+        spTitre1=AddSprite(3,4)
+        PropSprite spTitre1,287+priority(1),3
+        MoveSprite spTitre1,162,166
+        
+        'dim spTitre2 As Integer
+        spTitre2=AddSprite(3,4)
+        PropSprite spTitre2,299+priority(1),3
+        MoveSprite spTitre2,201,166
+        
+        'dim spTitre3 As Integer
+        spTitre3=AddSprite(3,4)
+        PropSprite spTitre3,311+priority(1),3
+        MoveSprite spTitre3,233,166
+        
+        'dim spTitre4 As Integer
+        spTitre4=AddSprite(3,4)
+        PropSprite spTitre4,323+priority(1),3
+        MoveSprite spTitre4,265,166
+        
+        'dim spTitre5 As Integer
+        spTitre5=AddSprite(3,4)
+        PropSprite spTitre5,335+priority(1),3
+        MoveSprite spTitre5,297,166
+        
+        'dim spTitre6 As Integer
+        spTitre6=AddSprite(3,4)
+        PropSprite spTitre6,347+priority(1),3
+        MoveSprite spTitre6,329,166
+        
+        'dim spTitre7 As Integer
+        spTitre7=AddSprite(3,4)
+        PropSprite spTitre7,359+priority(1),3
+        MoveSprite spTitre7,361,166
+        
+        'dim spTitre8 As Integer
+        spTitre8=AddSprite(3,3)
+        PropSprite spTitre8,371+priority(1),3
+        MoveSprite spTitre8,393,166
+        
+        ' BOUCLIER '
+        'dim spBouclier1 As Integer
+        spBouclier1=AddSprite(4,4)
+        PropSprite spBouclier1,946+priority(1),2
+        MoveSprite spBouclier1,416,320
+        
+        'dim spBouclier2 As Integer
+        spBouclier2=AddSprite(2,3)
+        PropSprite spBouclier2,962+priority(1),3
+        MoveSprite spBouclier2,424,321
+        
+        ' CHEVALIER '
+        'dim spChev1 As Integer
+        spChev1=AddSprite(4,4)
+        PropSprite spChev1,968+priority(1),2
+        MoveSprite spChev1,306,225
+        
+        'dim spChev2 As Integer
+        spChev2=AddSprite(4,4)
+        PropSprite spChev2,984+priority(1),2
+        MoveSprite spChev2,306,257
+        
+        'dim spChev3 As Integer
+        spChev3=AddSprite(4,4)
+        PropSprite spChev3,1000+priority(1),2
+        MoveSprite spChev3,306,289
+        
+        'dim spChev4 As Integer
+        spChev4=AddSprite(4,4)
+        PropSprite spChev4,1016+priority(1),2
+        MoveSprite spChev4,338,225
+        
+        'dim spChev5 As Integer
+        spChev5=AddSprite(4,4)
+        PropSprite spChev5,1032+priority(1),2
+        MoveSprite spChev5,338,257
+        
+        'dim spChev6 As Integer
+        spChev6=AddSprite(4,4)
+        PropSprite spChev6,1048+priority(1),2
+        MoveSprite spChev6,338,289
+        
+        
+    else
+        LoadTiles tiles_STEVE_JACKSON_fr,31,256
+        LoadTiles tiles_TITRE_ANG,131,287
+        LoadTiles tiles_ECRAN_TITRE_LAYER_A,403,418
+        LoadTiles tiles_ECRAN_TITRE_LAYER_B,161,821
+        LoadTiles tiles_BOUCLIER1,16,982
+        LoadTiles tiles_BOUCLIER2,6,998
+        LoadTiles tiles_CHEVALIER,96,1004
+        AdrFR1=418
+        AdrFR2=821
+        
+        ' STEVE JACKSON '
+        'dim spJackson1 As Integer
+        spJackson1=AddSprite(2,4)
+        PropSprite spJackson1,256,3
+        MoveSprite spJackson1,244,147
+        
+        'dim spJackson2 As Integer
+        spJackson2=AddSprite(2,4)
+        PropSprite spJackson2,264,3
+        MoveSprite spJackson2,276,147
+        
+        'dim spJackson3 As Integer
+        spJackson3=AddSprite(2,4)
+        PropSprite spJackson3,272,3
+        MoveSprite spJackson3,308,147
+        
+        'dim spJackson4 As Integer
+        spJackson4=AddSprite(2,2)
+        PropSprite spJackson4,280,3
+        MoveSprite spJackson4,340,147
+        
+        'dim spJackson5 As Integer
+        spJackson5=AddSprite(1,1)
+        PropSprite spJackson5,284,3
+        MoveSprite spJackson5,284,163
+        
+        ' LA CITADELLE DU CHAOS '
+        'dim spTitre1 As Integer
+        spTitre1=AddSprite(3,4)
+        PropSprite spTitre1,287,3
+        MoveSprite spTitre1,162+8,166
+        
+        'dim spTitre2 As Integer
+        spTitre2=AddSprite(3,4)
+        PropSprite spTitre2,299,3
+        MoveSprite spTitre2,201,166
+        
+        'dim spTitre3 As Integer
+        spTitre3=AddSprite(3,4)
+        PropSprite spTitre3,311,3
+        MoveSprite spTitre3,233,166
+        
+        'dim spTitre4 As Integer
+        spTitre4=AddSprite(3,4)
+        PropSprite spTitre4,323,3
+        MoveSprite spTitre4,265,166
+        
+        'dim spTitre5 As Integer
+        spTitre5=AddSprite(3,4)
+        PropSprite spTitre5,335,3
+        MoveSprite spTitre5,297,166
+        
+        'dim spTitre6 As Integer
+        spTitre6=AddSprite(3,4)
+        PropSprite spTitre6,347,3
+        MoveSprite spTitre6,329,166
+        
+        'dim spTitre7 As Integer
+        spTitre7=AddSprite(3,4)
+        PropSprite spTitre7,359,3
+        MoveSprite spTitre7,361,166
+        
+        'dim spTitre8 As Integer
+        spTitre8=AddSprite(3,3)
+        PropSprite spTitre8,371,3
+        MoveSprite spTitre8,393,166
+        
+        ' BOUCLIER '
+        'dim spBouclier1 As Integer
+        spBouclier1=AddSprite(4,4)
+        PropSprite spBouclier1,982,2
+        MoveSprite spBouclier1,416,320
+        
+        'dim spBouclier2 As Integer
+        spBouclier2=AddSprite(2,3)
+        PropSprite spBouclier2,982+16,3
+        MoveSprite spBouclier2,424,321
+        
+        ' CHEVALIER '
+        'dim spChev1 As Integer
+        spChev1=AddSprite(4,4)
+        PropSprite spChev1,1004,2
+        MoveSprite spChev1,306,225
+        
+        'dim spChev2 As Integer
+        spChev2=AddSprite(4,4)
+        PropSprite spChev2,1004+16,2
+        MoveSprite spChev2,306,257
+        
+        'dim spChev3 As Integer
+        spChev3=AddSprite(4,4)
+        PropSprite spChev3,1004+32,2
+        MoveSprite spChev3,306,289
+        
+        'dim spChev4 As Integer
+        spChev4=AddSprite(4,4)
+        PropSprite spChev4,1004+48,2
+        MoveSprite spChev4,338,225
+        
+        'dim spChev5 As Integer
+        spChev5=AddSprite(4,4)
+        PropSprite spChev5,1004+64,2
+        MoveSprite spChev5,338,257
+        
+        'dim spChev6 As Integer
+        spChev6=AddSprite(4,4)
+        PropSprite spChev6,1004+80,2
+        MoveSprite spChev6,338,289
+    end if    
+    '========================================='
+    '========================================='
+    '                 LAYER A                 '
+    '========================================='
+    '========================================='
+    
+    
+    SetGfxPlane Scroll_A
+    
+    Reload tilemap_ECRAN_TITRE_LAYER_A
+    
+    For y = 0 To 27
+    	For x = 0 To 39
+    		ReadInt numeroTile
+    		tilemap_SCENE(x,y) = numeroTile
+    	Next x
+    Next y
+    	
+    For y = 0 To 27
+    	For x = 0 To 39
+    		DrawTile tilemap_SCENE(x,y)+AdrFR1+Palette(1),x,y
+    	Next x
+    Next y	
+    
+    '========================================='
+    '========================================='
+    '                 LAYER B                 '
+    '========================================='
+    '========================================='
+    
+    SetGfxPlane Scroll_B
+    
+    Reload tilemap_ECRAN_TITRE_LAYER_B
+    
+    For y = 0 To 27
+    	For x = 0 To 39
+    		ReadInt numeroTile
+    		tilemap_SCENE(x,y) = numeroTile
+    	Next x
+    Next y
+    	
+    For y = 0 To 27
+    	For x = 0 To 39
+    		DrawTile tilemap_SCENE(x,y)+AdrFR2+Palette(0),x,y
+    	Next x
+    Next y	
+    
+    Enable Screen
+    
+    fadeinEx lblptr&(pal_ECRAN_TITRE),0,5,4
+    
+    a=0
+    b=150
+    c=0
+    Flash=0
+ do
+    a++
+    randomize a
+    if a>b then Flash=1
+    if Flash then c++
+    if c then
+        if c=1 then Palettes PalEclairB,0,0,16
+        if c=3 then Palettes PalLayerB,0,0,16:a=0:c=0:Flash=0:b=rnd(200)
+    end if
+    'sleep 50
+    'exit do
+    sleep 1,TVBlank
+ loop   
+     fadeoutEx lblptr&(pal_ECRAN_TITRE),0,5,4
+ end
+    
+
+   
+'Fade IN
+declare sub fadeinEx(palloc& as long, palline as integer, fadespeed as integer,NbPalette as integer)
+    Nb=NbPalette*15+4
+	for y=7 to 0 step -1
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	pal_edit_blue=paltemp>>8
+	pal_edit_red=paltemp and &hF
+	pal_edit_green=paltemp>>4-(pal_edit_blue<<4)
+	if pal_edit_blue >= (y+y) then
+		pal_edit_blue=pal_edit_blue-(y+y)
+	else
+		pal_edit_blue=0
+	endif
+	if pal_edit_green >= (y+y) then
+		pal_edit_green=pal_edit_green-(y+y)
+	else
+		pal_edit_green=0
+	endif
+	if pal_edit_red >= (y+y) then
+		pal_edit_red=pal_edit_red-(y+y)
+	else
+		pal_edit_red=0
+	endif
+	paltemp=pal_edit_red+(pal_edit_green<<4)+(pal_edit_blue<<8)
+	palette paltemp,palline,x
+	next x
+	sleep fadespeed
+	next y
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	Palette paltemp, palline, x
+	next
+end sub    
+    
+    
+declare sub fadeoutEx(palloc& as long, palline as integer, fadespeed as integer,NbPalette as integer)
+    Nb=15*NbPalette+4
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	Palette paltemp, palline, x
+	next
+
+	for y=0 to 7 step
+	for x=0 to Nb
+	paltemp=PEEKINT(palloc&+(x+x))
+	pal_edit_blue=paltemp>>8
+	pal_edit_red=paltemp and &hF
+	pal_edit_green=paltemp>>4-(pal_edit_blue<<4)
+	if pal_edit_blue >= (y+y) then
+		pal_edit_blue=pal_edit_blue-(y+y)
+	else
+		pal_edit_blue=0
+	endif
+	if pal_edit_green >= (y+y) then
+		pal_edit_green=pal_edit_green-(y+y)
+	else
+		pal_edit_green=0
+	endif
+	if pal_edit_red >= (y+y) then
+		pal_edit_red=pal_edit_red-(y+y)
+	else
+		pal_edit_red=0
+	endif
+	paltemp=pal_edit_red+(pal_edit_green<<4)+(pal_edit_blue<<8)
+	palette paltemp,palline,x
+	next x
+	sleep fadespeed
+	next y
+end sub
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+'---------------------------------------------------------'
+'---------------------------------------------------------'
+'				      TILES & TILEMAPS 				      '
+'---------------------------------------------------------'
+'---------------------------------------------------------'
+
+' TILES LAYER B '
+tiles_LAYER_B:
+	DataFile GFX\tiles_ECRAN_TITRE_LayerB.Bin,Bin
+
+' TILEMAP LAYER B '
+tilemap_LAYER_B:
+	DataFile GFX\tilemap_ECRAN_TITRE_LayerB.Bin,Bin
+
+
+' TILES LAYER A '
+tiles_LAYER_A:
+	DataFile GFX\tiles_ECRAN_TITRE_LayerA.Bin,Bin 
+
+' TILEMAP LAYER A '
+tilemap_LAYER_A:
+	DataFile GFX\tilemap_ECRAN_TITRE_LayerA.Bin,Bin
+
+'---------------------------------------------------------'
+
+' TILES STEVE JACKSON FR '
+tiles_STEVE_JACKSON_FR:
+	DataFile GFX\tiles_STEVE_JACKSON_FR.Bin,Bin
+
+' TILES STEVE JACKSON ANG '
+tiles_STEVE_JACKSON_ANG:
+	DataFile GFX\tiles_STEVE_JACKSON_ANG.Bin,Bin
+
+' TILES TITRE FR '
+tiles_TITRE_FR:
+	DataFile GFX\tiles_TITRE_FR.Bin,Bin	 
+
+'---------------------------------------------------------'
+
+' TILES LAYER A '
+tiles_ECRAN_TITRE_LAYER_A:
+	DataFile GFX\tiles_ECRAN_TITRE_LayerA.Bin,Bin
+
+' TILEMAP LAYER A '
+tilemap_ECRAN_TITRE_LAYER_A:
+	DataFile GFX\tilemap_ECRAN_TITRE_LayerA.Bin,Bin
+
+' TILES LAYER B '
+tiles_ECRAN_TITRE_LAYER_B:
+	DataFile GFX\tiles_ECRAN_TITRE_LayerB.Bin,Bin
+
+' TILEMAP LAYER B '
+tilemap_ECRAN_TITRE_LAYER_B:
+	DataFile GFX\tilemap_ECRAN_TITRE_LayerB.Bin,Bin
+
+'---------------------------------------------------------'
+
+' TILES BOUCLIER 1 '
+tiles_BOUCLIER1:
+	DataFile GFX\tiles_BOUCLIER1.Bin,Bin
+
+' TILES BOUCLIER 2 '
+tiles_BOUCLIER2:
+	DataFile GFX\tiles_BOUCLIER2.Bin,Bin
+
+'---------------------------------------------------------'
+
+' TILES CHEVALIER '
+tiles_CHEVALIER:
+	DataFile GFX\tiles_CHEVALIER.Bin,Bin
+    
+Tiles_TITRE_ANG:
+	DataFile GFX\tiles_TITRE_ANG.Bin,Bin    
+    
+    
+    '---------------------------------------------------------'
+    
+    '---------------------------------------------------------'
+    '					        PALETTE       		          '
+    '---------------------------------------------------------'
+    
+PalEclairB:
+	DataInt	$0000,$0EEE,$0EEE,$08CE,$0AEE,$0CEE,$0EEE,$0424 ' LAYER B '
+	DataInt	$0646,$0CAC,$0868,$0A8A,$0000,$0000,$0000,$0000
+	
+PalLayerB:
+	DataInt	$0000,$048E,$06AE,$08CE,$0AEE,$0CEE,$0EEE,$0424 ' LAYER B '
+	DataInt	$0646,$0CAC,$0868,$0A8A,$0000,$0000,$0000,$0000
+    
+pal_ECRAN_TITRE:
+	DataInt	$0000,$048E,$06AE,$08CE,$0AEE,$0CEE,$0EEE,$0424 ' LAYER B '
+	DataInt	$0646,$0CAC,$0868,$0A8A,$0000,$0000,$0000,$0000
+
+	DataInt	$0E0E,$0000,$0002,$0020,$0242,$0464,$0246,$068A ' LAYER A '
+	DataInt	$0024,$0468,$08AC,$0ACE,$0222,$0444,$0666,$0888
+
+	DataInt	$0E0E,$0600,$0820,$0A40,$0C62,$0E84,$0EA6,$0244	' PALETTE CHEVALIER '
+	DataInt	$0466,$0688,$08AA,$0ACC,$0026,$0248,$046A,$068C	
+
+	DataInt	$0E0E,$0000,$0022,$0288,$028A,$04CC,$0268,$04CE	' PALETTE TITRE
+	DataInt	$0066,$0044,$02AC,$06EE,$0224,$0226,$0228,$022A	
+    
+pal_BlackAll:
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+ 	DataInt	$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
